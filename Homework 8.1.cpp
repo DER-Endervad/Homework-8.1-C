@@ -19,14 +19,14 @@ int main()
             std::cout << "Длина слова '" << str << "' равна " << length << std::endl;
         }
     }
-    catch (const char* с) {
-        std::cerr << с << std::endl;
+    catch (std::domain_error& с) {
+        std::cerr << с.what() << std::endl;
     }
 }
 
 int function(std::string str, int forbidden_length) {
     if (str.length() == forbidden_length) {
-        throw "Вы ввели слово запретной длины! До свидания";
+        throw std::domain_error("Вы ввели слово запретной длины! До свидания");
     }
     else {
         return str.length();
